@@ -1,19 +1,20 @@
 public class Question {
 
 	public static void main(String[] args) {
-		String password = "obakyu";
+		String password = "hoge";
 
 		//今までの if{}else{}
 		String pwd = "0";
-		if(password.equals("obakyu")){
+		if(password.equals("hoge")){
 			pwd = "(n/a)";
 		}else{
 			pwd = password;
 		}
+		System.out.println("絶対に間違えないマン：" + pwd);
 
 
 		//次なる構造
-		if(password.equals("obakyu"))
+		if(password.equals("hoge"))
 			pwd = "(n/a)";
 		else
 			pwd = password;
@@ -22,7 +23,7 @@ public class Question {
 
 
 		//新しい構造 ?"":
-		pwd = (password.equals("obakyu"))?
+		pwd = (password.equals("hoge"))?
 				"(n/a)"
 				:password;
 
@@ -31,5 +32,5 @@ public class Question {
 	}
 }
 
-//5行が本来1行に収まる
+//1行,改行すれば3行に収まる
 //使いこなせるまでは改行して、使いこなせたら強そう
