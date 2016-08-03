@@ -4,17 +4,17 @@
  */
 public class Equals {
 	private static final String HOGE = "hoge",
-								HO = "ho",
-								GE = "ge",
-								PLUS = HO + GE;
+					HO = "ho",
+					GE = "ge",
+					PLUS = HO + GE;
 
 	public static void main(String args[]) {
 		System.out.println("HOGE == PLUS ﾌｨｰﾙﾄﾞ は" + (HOGE == PLUS));				//true
 
 		final String hoge = "hoge",
-					ho = "ho",
-					ge = "ge",
-					plus = ho + ge;
+				ho = "ho",
+				ge = "ge",
+				plus = ho + ge;
 		System.out.println("hoge == plus ﾛｰｶﾙ は" + (hoge == plus));				//false
 		System.out.println("hoge.equals(plus) ﾛｰｶﾙ は" + (hoge.equals(plus)));		//true
 
@@ -37,9 +37,7 @@ public class Equals {
 /*
 	コンパイラの最適化に頼るべきではない！
 	だから==じゃなくてequalsを正しく使うべき！
- */
-
-/*
+	
 	System.out.println()は標準出力
 	System.err.println()はエラー表示
 	・外部に書き込むとき
