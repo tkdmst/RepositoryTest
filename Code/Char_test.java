@@ -1,11 +1,11 @@
 
-public class char_test {
-  public static void main(String[] args) {
-    1();
-    2();
+public class Char_test {
+	public static void main(String[] args) {
+    		step1();
+	 	step2();
 	}
 	
-	public static void 1(){
+	public static void step1(){
 		System.out.print("改行は↓\nです\n");
 		System.out.print("行頭は←\rです\r");
 		System.out.println("プリントラインはenter");
@@ -22,7 +22,7 @@ public class char_test {
 		System.out.println("\'\\\'\t\"\\\"");
 	}
 		
-	public static void 2(){	
+	public static void step2(){	
 		char a = 'a', ab = '1', ac = 'あ';
 		// char b = "b"; char型は1文字専用なので""は不可
 		// char c = 'cd'; 上に同じく不可
