@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 // List問題
-public class PrimitiveTest2 {
+public class EqualList {
 	/** ＝で繋ぐ変数はfinalが付けられず。 */
 	private final List<String> org = new ArrayList<String>();
 	private final List<String> arrayListAdd = new ArrayList<String>();
