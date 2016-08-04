@@ -1,10 +1,10 @@
-public class Question {
+public class TernaryOperation {
 
 	public static void main(String[] args) {
 		String password = "hoge";
+		String pwd = "0";
 
 		//今までの if{}else{}
-		String pwd = "0";
 		if(password.equals("hoge")){
 			pwd = "(n/a)";
 		}else{
