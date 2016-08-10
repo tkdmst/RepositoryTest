@@ -1,0 +1,78 @@
+一昨日、昨日とレポジトリにあげる暇がなかったせいで書き足りない！
+ということで面白い仕様が作れるDataPointを
+
+	@RunWith(Theories.class)
+	public static class データポイント楽しいﾖ {
+
+		@DataPoints
+		public static int[] NOM_PARAMs = { 2, 3, 4, 6, 8 };
+		@DataPoint
+		public static String TEST_VALUE = "sample";
+		
+		@Theory
+		public void 表示テスト(int p, String v) throws Exception {
+			System.out.println(p + "," + v);
+		}
+	}
+
+/*  
+    2,sample
+    3,sample
+    4,sample
+    6,sample
+    8,sample
+*/
+
+全部試せるんです！！めっさ便利！！
+これは普通のクラスでも作って欲しいね！！！
+いかに楽になるか！！！
+
+とアホなことを考えつつJUnitについて学んでいます。
+throws Exception　なのが気になるけど、クラス外に飛んでったら結局エラーなので。。
+
+とにもかくにも
+DataPoints　はデータを全部回ってくれるのが嬉しすぎてアップしました。
+後悔はしていない！
+
+
+
+
+
+
+ちなみに...............
+
+
+
+
+
+	@RunWith(Theories.class)
+	public static class データポインツ楽しいﾖ {
+
+		@DataPoints
+		public static int[] NOM_PARAMs = { 2, 3, 4, 6, 8 };
+		@DataPoints
+		public static String[] TEST_VALUE = {"hogege", "piyoyo"};
+		
+		@Theory
+		public void 表示テスト(int p, String v) throws Exception {
+			System.out.println(p + "," + v);
+		}
+	}
+
+/*
+    2,hogege
+    2,piyoyo
+    3,hogege
+    3,piyoyo
+    4,hogege
+    4,piyoyo
+    6,hogege
+    6,piyoyo
+    8,hogege
+    8,piyoyo
+*/
+はー全部回って本当に幸せ。
+楽しすぎる・・・。
+数学的、緻密的素敵さを感じますね！
+このふたつのデータ格納はすごく魅力を感じます！
+でもセオリーはちょっとめんどくさいなーと思ってたり思っていなかったりします。
