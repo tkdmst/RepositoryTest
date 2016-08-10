@@ -1,0 +1,31 @@
+JUnitの存在すら知らなかった初心者が学んだこと
+
+JUnitは単体テストに使うもの！
+※単体テストとは
+　このメソッドを使うと戻り値としてこれが入ってくるはず！
+　って結果を確認するテストのこと。
+@Test
+public void 数字の比較() {
+	assertThat(1 + 5, is(6));
+}
+　これの場合は元のメソッドがないから楽に作ってしまったけれども！
+	本来のテストはプログラムしたコードがあって、そのメソッドを呼ばないことには何も始まらない！
+	
+// プログラムコード　TestClassってクラス名だとして
+public String getSample(String sample){
+  return sample;
+}
+	
+//テストコード
+@Test
+public void hogeを引数にしてもって帰ってこれる(){
+ TestClass test = new TestClass();
+ String actual = test.sample("hoge");
+ assertThat("hoge", is(actual));
+}                     // もちろんtrue グリーンバー！
+
+ちなみにassertThat isは同じかどうか確かめるもの。
+最初は、意味がわからなすぎて苦労したけどJUnit4.10をいれたら動きました！
+4.12はhamcrastだかなんだかが入っていなくて動かなかった。。
+もーいいや！とHPにあった古いJUnitを使っている私です。
+面白い仕様はこの次で！！
