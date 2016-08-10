@@ -18,8 +18,9 @@ public class Char_test {
 		// これで表示できる
 		System.out.print("改行のエスケープシーケンスは\nです\r");
 		System.out.print("\\ \' \"");
-		// \' \\ \' \t \" \\ \" で'\' \t "\"になる
-		System.out.println("\'\\\'\t\"\\\"");
+
+		System.out.println("\'\\\'\n\"\\\"");
+		//	\' \\ \' \n \" \\ \" 	と分けて	'\' \n "\"	なので改行含んで表示となる
 	}
 		
 	public static void step2(){	
