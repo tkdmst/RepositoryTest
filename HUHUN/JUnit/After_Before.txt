@@ -1,0 +1,98 @@
+
+始めに言っておこう
+
+#########悪い癖が出た############
+
+
+
+
+import static org.junit.Assert.*;
+import org.junit.*;
+import org.junit.runner.JUnitCore;
+
+public class SampleTest {
+
+	static {
+		System.out.println("static");
+	}
+
+	public static void main(String[] args) {
+		System.out.println("メイン");
+		JUnitCore.main(SampleTest.class.getName());
+		System.out.println("通らないよー");
+	}
+
+
+	{System.out.println("**インスタンスイニシャライザ**");}
+
+	@BeforeClass
+	public static void ファースト(){
+		System.out.println("はっじまるよー");
+	}
+
+	@Before
+	public void チャチャチャ(){
+		System.out.println("！始め！");
+	}
+
+	@Test
+	public void とまとてすと() {
+		String str = "とまと";
+		System.out.println(str);
+		assertEquals(str, "とまと");
+	}
+
+	@Test
+	public void すいかてすと() {
+		String str = "すいか";
+		System.out.println(str);
+		assertEquals(str, "すいか");
+	}
+
+	@After
+	public void ネクスト(){
+		System.out.println("！次は！");
+	}
+
+	@AfterClass
+	public static void ラスト(){
+		System.out.println("おつかれさまでしたー");
+	}
+}
+
+
+見ての通り遊びすぎだよ！！！！
+Javaで開始できるようにメインを入れたテストを作りました。
+あ、結果です。
+
+/*
+    static
+    メイン
+    JUnit version 4.10
+    はっじまるよー
+    **インスタンスイニシャライザ**
+    .！始め！
+    とまと
+    ！次は！
+    **インスタンスイニシャライザ**
+    .！始め！
+    すいか
+    ！次は！
+    おつかれさまでしたー
+    
+    Time: 0.006
+    
+    OK (2 tests)
+*/
+
+
+遊びすぎでは？？？
+とまぁこんな形でBeforeとAfter系も試せたので良し。
+ちなみにこの！始め！の前の　.　なんですが、イニシャライザ消しても消えないので仕様ですかね・・・
+気になって消したかったのだがどうにも消えない
+わざわざnewLineするのも負けた気がして嫌でそのまま放置。
+
+
+
+サンプルプログラムは上司に見せられなくなってきたよ！
+が、このアカウントは知られているためあしからず･･･
