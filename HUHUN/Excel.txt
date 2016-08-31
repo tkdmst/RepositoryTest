@@ -1,0 +1,7 @@
+Excelの設定
+
+ユーザー定義
+aaaa    日曜日～土曜日
+aaa     日～土
+dddd    Sunday～Saturday
+ddd     Sun～Sat
