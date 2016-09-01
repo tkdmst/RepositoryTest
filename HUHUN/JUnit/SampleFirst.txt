@@ -1,0 +1,86 @@
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.runner.JUnitCore;
+
+public class SampleFirst {
+
+	// staticは真っ先に1回だけ通る
+	static {
+		System.out.println("static");
+	}
+
+	// このクラス内で起こるBeforeの前に毎回通る
+	{System.out.println("++++インスタンスイニシャライザ++++");}
+
+	public static void main(String[] args) {
+		System.out.println("メイン");
+		JUnitCore.main(SampleFirst.class.getName());
+		System.out.println("絶対に通らない");
+	}
+
+	// Classが付く二つはstaticが必須
+	@BeforeClass
+	public static void first(){
+		System.out.println("***開始");
+	}
+	@AfterClass
+	public static void last(){
+		System.out.println("***終了");
+	}
+
+	// staticは禁止！
+	@Before
+	public void ビフォーテスト(){
+		System.out.println(">>びふぉー");
+	}
+	@Test
+	public void テスト１(){
+		System.out.println("テスト１！");
+	}
+
+	@Test
+	public void テスト２(){
+		System.out.println("テスト２！");
+	}
+	@After
+	public void アフターテスト(){
+		System.out.println(">>あふたー");
+	}
+}
+
+
+/*
+	static
+	メイン
+	JUnit version 4.10
+	***開始
+	++++インスタンスイニシャライザ++++
+	.>>びふぉー
+	テスト１！
+	>>あふたー
+	++++インスタンスイニシャライザ++++
+	.>>びふぉー
+	テスト２！
+	>>あふたー
+	***終了
+	
+	Time: 0.007
+	
+	OK (2 tests)
+ */
+
+@RunWithを使わずに一番単純に作ったテスト
+
+テストを実行すると毎回インスタンスされている状態らしく、イニシャライザされるんだよね！
+だから判りにくいけど実際は
+Before→Test→After
+って通しているだけです
+
+staticは一回の癖にイニシャライザは何回も通るとか！
+わかりにくいよ！
+コンストラクタ入れると更に面倒なんでやりません！
+
+おしまい
