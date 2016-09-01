@@ -1,0 +1,57 @@
+import org.junit.After;
+import org.junit.BeforeClass;
+import org.junit.experimental.runners.Enclosed;
+import org.junit.experimental.theories.DataPoint;
+import org.junit.experimental.theories.DataPoints;
+import org.junit.experimental.theories.Theories;
+import org.junit.experimental.theories.Theory;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.RunWith;
+
+@RunWith(Enclosed.class)
+public class SampleTheories {
+
+
+	public static void main(String[] args) {
+		System.out.println("メイン");
+		JUnitCore.main(SampleTheories.class.getName());
+	}
+
+	@BeforeClass
+	public static void 最初(){
+		System.out.println("じゃんけん");
+	}
+
+	@RunWith(Theories.class)
+	public static class データポイントで遊ぶ {
+
+		@DataPoint
+		public static String PARAMs = "GU";
+		@DataPoints
+		public static String[] PARAM = {"TYOKI", "PA" };
+
+		@Theory
+		public void 組み合わせ(String f, String n) {
+			System.out.print(f + " vs " + n);
+		}
+
+		@After
+		public void SetUp() {
+			System.out.print(", ");
+		}
+	}
+}
+/*
+    メイン
+    JUnit version 4.10
+    じゃんけん
+    .GU vs GU, GU vs TYOKI, GU vs PA, TYOKI vs GU, TYOKI vs TYOKI, TYOKI vs PA, PA vs GU, PA vs TYOKI, PA vs PA, 
+    Time: 0.018
+    
+    OK (1 test)
+*/
+
+全部を回したくなった病
+いろいろ詰め込みすぎたので分割よー
+ついつい楽しくなっていろいろ入れすぎちゃう(ω)
+
