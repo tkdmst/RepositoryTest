@@ -7,56 +7,94 @@
 
 
 import static org.junit.Assert.*;
-import org.junit.*;
-import org.junit.runner.JUnitCore;
 
-public class SampleTest {
+import org.junit.After;
+import org.junit.AfterClass;
+import org.junit.Before;
+import org.junit.BeforeClass;
+import org.junit.Test;
+import org.junit.experimental.runners.Enclosed;
+import org.junit.experimental.theories.DataPoints;
+import org.junit.experimental.theories.Theories;
+import org.junit.experimental.theories.Theory;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.RunWith;
+
+@RunWith(Enclosed.class)
+public class SampleEnclosed {
 
 	static {
 		System.out.println("static");
 	}
-
 	public static void main(String[] args) {
 		System.out.println("メイン");
-		JUnitCore.main(SampleTest.class.getName());
-		System.out.println("通らないよー");
+		JUnitCore.main(SampleEnclosed.class.getName());
 	}
 
-
-	{System.out.println("**インスタンスイニシャライザ**");}
-
 	@BeforeClass
-	public static void ファースト(){
+	public static void first(){
 		System.out.println("はっじまるよー");
 	}
 
-	@Before
-	public void チャチャチャ(){
-		System.out.print("！始め！");
-	}
-
-	@Test
-	public void とまとてすと() {
-		String str = "とまと";
-		System.out.print(str);
-		assertEquals(str, "とまと");
-	}
-
-	@Test
-	public void すいかてすと() {
-		String str = "すいか";
-		System.out.print(str);
-		assertEquals(str, "すいか");
-	}
-
-	@After
-	public void ネクスト(){
-		System.out.println("！次は！");
-	}
-
 	@AfterClass
-	public static void ラスト(){
+	public static void last(){
 		System.out.println("おつかれさまでしたー");
+	}
+
+	// EnclosedにしているためここにAfterやTestを置いても通らない！
+
+	/**
+	 * ！始め！すいか！次は！<br/>
+	 * ！始め！とまと！次は！ */
+	public static class 音頭{
+		@Before
+		public void SetUp() {
+			System.out.print("！始め！");
+		}
+
+		@Test
+		public void とまとてすと() {
+			String str = "とまと";
+			System.out.print(str);
+			assertEquals(str, "とまと");
+		}
+
+		@Test
+		public void すいかてすと() {
+			String str = "すいか";
+			System.out.print(str);
+			assertEquals(str, "すいか");
+		}
+
+		@After
+		public void Dropdown() {
+			System.out.println("！次は！");
+		}
+	}
+
+	/**
+	 * ----*----<br/>
+	 * ぶどうも食べたい！<br/>
+	 * *-------* */
+	@RunWith(Theories.class)
+	public static class ちょっとおためしクラス {
+		@Before
+		public void SetUp() {
+			System.out.println("----*----");
+		}
+
+		@DataPoints
+		public static String[] PARAM = { "ぶどう", "りんご", "もも" };
+
+		@Theory
+		public void ｱｰ(String f) {
+			System.out.println(f + "も食べたい");
+		}
+
+		@After
+		public void Dropdown() {
+			System.out.println("*-------*");
+		}
 	}
 }
 
@@ -66,19 +104,26 @@ Javaで開始できるようにメインを入れたテストを作りました�
 あ、結果です。
 
 /*
-    static
-    メイン
-    JUnit version 4.10
-    はっじまるよー
-    **インスタンスイニシャライザ**
-    .！始め！とまと！次は！
-    **インスタンスイニシャライザ**
-    .！始め！すいか！次は！
-    おつかれさまでしたー
-    
-    Time: 0.006
-    
-    OK (2 tests)
+	static
+	メイン
+	JUnit version 4.10
+	はっじまるよー
+	.----*----
+	ぶどうも食べたい
+	*-------*
+	----*----
+	りんごも食べたい
+	*-------*
+	----*----
+	ももも食べたい
+	*-------*
+	.！始め！すいか！次は！
+	.！始め！とまと！次は！
+	おつかれさまでしたー
+	
+	Time: 0.019
+	
+	OK (3 tests)
 */
 
 
@@ -90,5 +135,6 @@ Javaで開始できるようにメインを入れたテストを作りました�
 
 
 
-サンプルプログラムは上司に見せられなくなってきたよ！
-が、このアカウントは知られているためあしからず･･･
+2016/09/01
+いろいろ追加と削除！
+JUnit君は忘れそうなのでいろいろと書き残す予定！
